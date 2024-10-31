@@ -1,0 +1,16 @@
+// 获取cookie
+function getCookie(name) {
+    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    if (arr != null) return unescape(arr[2]); return null;
+}
+var cookieName = "session";
+session = getCookie(cookieName)
+console.log(session);
+// 解码和解析cookie
+session_json = JSON.parse(atob(session));
+console.log(session_json);
+
+session_json.account.bitbars = 1000001;
+// 编码并重写cookie
+session = btoa(JSON.stringify(session_json));
+document.cookie = "session=" + session + "; path=/";
